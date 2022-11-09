@@ -1,0 +1,11 @@
+==============================================================================
+Tasks :: Orders robots from RobotSpareBin Industries Inc. Saves the order H...
+==============================================================================
+Order robots from RobotSpareBin Industries Inc                        | FAIL |
+No keyword with name 'test' found.
+------------------------------------------------------------------------------
+Tasks :: Orders robots from RobotSpareBin Industries Inc. Saves th... | FAIL |
+1 task, 0 passed, 1 failed
+==============================================================================
+Output:  d:\Sree\RoboCorp\Workspace Folder\RobotSpareBin\output\output.xml
+Log:     d:\Sree\RoboCorp\Workspace Folder\RobotSpareBin\output\log.html
