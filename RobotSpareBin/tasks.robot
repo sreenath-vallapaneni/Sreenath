@@ -13,6 +13,9 @@ Library             RPA.PDF
 Library    OperatingSystem
 Library    RPA.Archive
 Library    RPA.Dialogs
+Library           RPA.Robocorp.Vault
+Library    String
+
 
 *** Variables ***
 ${PDF_DIRECTORY}=       ${outputdir}\\temp\\
@@ -20,6 +23,7 @@ ${PDF_DIRECTORY}=       ${outputdir}\\temp\\
 *** Tasks ***
 Order robots from RobotSpareBin Industries Inc
     Create Directory    ${PDF_DIRECTORY}
+    
     Open the robot order website
     ${orders}=    Get orders
         FOR    ${row}    IN    @{orders}
@@ -44,9 +48,9 @@ Open the robot order website
     Open Available Browser    https://robotsparebinindustries.com/
 
 Get Orders
-     ${url}=    Get the URl from User Input
+     ${url}=    Get the URl from User Input 
     #Download    https://robotsparebinindustries.com/orders.csv    overwrite=TRUE
-    Download    ${url}   overwrite=TRUE
+    Download    ${url}   overwrite=TRUE  
     ${dt}=    Read table from CSV    orders.csv
     RETURN    ${dt}
 
@@ -95,8 +99,7 @@ Take a screenshot of the robot
     Return From Keyword      ${order number}.PNG
 
 Embed the robot screenshot to the receipt PDF file
-    [Arguments]    ${screenshot}     ${pdf}
-    
+    [Arguments]    ${screenshot}     ${pdf}    
     ${Files}=    Create List    
     ...    ${screenshot}
     ...    ${pdf} 
@@ -116,4 +119,4 @@ Get the URl from User Input
     Add heading    Provide Input
     Add text input    url    label=URL of the orders CSV file
     ${response}=    Run dialog
-    RETURN    ${response}
+    RETURN    ${response}[url]
